@@ -5,3 +5,10 @@
   renderer.render(scene, camera)
 
 ```
+
+
+
+[Geometry Objects](https://blog.csdn.net/qq_31976161/article/details/84373089)
+
+
+
