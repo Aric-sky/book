@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+		html, body {
+				margin: 0;
+				height: 100%;
+		}
+		canvas {
+				display: block;
+		}
+		div#canvas-frame {
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			height: 600px;
+			background-color: #EEEEEE;
+		}
+	</style>
+  <script src="../js/zepto.min.js"></script>
+  <!-- <script src="../js/three1.min.js"></script> -->
+  <script src="https://threejs.org/build/three.min.js"></script>
+	<script>
+		//定义场景并初始化
+		var scene;
+		function initScene(){
+			scene = new THREE.Scene();
+		}
+		
+		//定义相机并初始化
+		var camera;
+		function initCamera(){
+			var cameraPosition = 900
+			camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,1,10000);
+			camera.position.set(cameraPosition,cameraPosition,cameraPosition);
+			camera.lookAt(new THREE.Vector3(0,0,0));
+		}
+		
+		//定义渲染器并初始化
+		var renderer;
+		function initRenderer(){
+			renderer= new THREE.WebGLRenderer();
+			width=$("#canvas-frame").width();
+			height=$("#canvas-frame").height();
+			renderer.setSize(width,height);
+			$("#canvas-frame").append(renderer.domElement);
+			renderer.setClearColor(0x39609b,1);
+		}
+		
+		//定义灯光并初始化
+		var light;
+		function initLight(){
+			light=new THREE.DirectionalLight(0xFF0000,1.0,0);
+			light.position.set(100,100,200);
+			scene.add(light);
+		}
+		
+		function initObject(){
+			var geometry = new THREE.Geometry();
+			var material = new THREE.MeshBasicMaterial({ 
+        linewidth: 1,
+				color: 0x2E8B57
+        // vertexColors: true
+      });
+			// var color1=new THREE.Color(0x2E8B57);
+			// var color2=new THREE.Color(0x2E8B57);
+			// var color3=new THREE.Color(0xDC143C);
+			// var color4=new THREE.Color(0xFFFFFF);
+			
+			var p1=new THREE.Vector3(10,100,0);
+			var p2=new THREE.Vector3(300,100,0);
+			var p3=new THREE.Vector3(300,300,0);
+			var p4=new THREE.Vector3(10,300,0);
+			
+			geometry.vertices.push(p1);
+			geometry.vertices.push(p2);
+			geometry.vertices.push(p3);
+			geometry.vertices.push(p4);
+			// geometry.colors.push(color1,color2,color3,color4);
+			
+			var line=new THREE.Line(geometry,material);
+			
+			
+			scene.add(line);
+
+      var axisHelper = new THREE.AxisHelper(1000)
+      scene.add(axisHelper)
+
+			//声明一个球体
+			var geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
+			// 反转X轴上的几何图形，使所有的面点向内。
+			geometry.scale( - 1, 1, 1 );
+			//声明球体纹理
+			var material = new THREE.MeshBasicMaterial( {
+					map: new THREE.TextureLoader().load( 'https://img.alicdn.com/tfs/TB1hX5aQIfpK1RjSZFOXXa6nFXa-4096-2048.jpg' ) //加载一整张纹理图片
+			} );
+			mesh = new THREE.Mesh( geometry, material );
+			scene.add( mesh );
+
+		}
+	
+		function threeStart(){
+			initScene();
+			initCamera();
+			initRenderer();
+			// initLight();
+			initObject();
+			// 渲染
+			animate()
+		}
+  function animate () {
+    //循环本身
+    requestAnimationFrame(animate);
+		mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+    //渲染场景
+    renderer.render(scene, camera)
+  };
+	</script>
+</head>
+<body onload="threeStart();">
+	<div id="canvas-frame"></div>
+</body>
+</html>

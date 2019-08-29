@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>绘制一个盒子的实现和虚线</title>
+</head>
+<style>
+  html,body{
+      position:relative;
+      height:100%;
+  }
+  body { margin: 0; }
+  canvas { width: 100%; height: 100% }
+  ul{
+      padding:0;
+      margin:0;
+      list-style: none;
+  }
+
+  *{box-sizing: border-box;}
+</style>
+<body>
+
+  <script src="../js/three.min.js"></script>
+  <script>
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0xaaaaaa );
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+    // 实线
+    var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+    var edges = new THREE.EdgesGeometry( geometry );
+    var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { 
+        color: 0xffffff,
+        linewidth: 5,
+        linejoin:  'bevel',
+        linecap: 'square',
+    }));
+    scene.add( line );
+
+    // 虚线
+    var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+    var edges = new THREE.EdgesGeometry( geometry );
+    var line = new THREE.LineSegments( edges, new THREE.LineDashedMaterial( { color: 0xffffff,dashSize: 0.1, gapSize: 0.1,linewidth: 1} ));
+    line.computeLineDistances(); // 非常重要 不然出不来效果
+    line.position.y = 2;
+    scene.add( line );
+
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame( animate );
+        renderer.render( scene, camera );
+    }
+    animate();
+
+</script>
+</body>
+</html>
