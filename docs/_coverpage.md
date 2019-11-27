@@ -1,18 +1,9 @@
+# wangyuanqi
 
-<!-- 背景图片 -->
-<!-- ![logo](_media/bg.png) -->
+个人网站
 
-# 我的文档网站
-## 个人文档网站
-> 一个神奇的文档网站生成巩固
+[<i class="iconfont icon-github"></i> GitHub](https://github.com/Aric-sky)
+[马上开始 <i class="iconfont icon-down"></i>](#main)
 
-* Simple and lightweight (~12kb gzipped)
-* Multiple themes
-* Not build static html files
-
-[GitHub](https://github.com/docsifyjs/docsify/)
-[Get Started](#quick-start)
-[Get Started](#quick-start)
-
-<!-- 背景色 -->
-<!-- ![color](#2f4253) -->
+<!-- background image -->
+![](https://i.loli.net/2018/01/15/5a5bcb771cc40.jpg)

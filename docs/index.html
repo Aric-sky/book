@@ -8,25 +8,58 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
+  
+  <!-- 新增 -->
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_539333_ah8wb2hv6yknvcxr.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster"rel="stylesheet">
+
+  <style>
+    section.cover.has-mask .mask {
+      background-image: linear-gradient(hsla(0, 0%, 100%, 0.25),hsla(0, 0%, 100%, 0.75));
+      background-color: transparent;
+      opacity: 1;
+    }
+
+    section.cover h1 .anchor span{
+      font-family: 'Lobster', cursive;
+      color: var(--theme-color);
+    }
+
+    section.cover .cover-main>p:last-child a .iconfont {
+      font-size: 1em;
+    }
+
+    .sidebar>h1 a {
+      font-family: 'Lobster', cursive;
+    }
+  </style>
 </head>
 <body>
-  <nav>
+  <!-- <nav>
     <a href="#/">首页</a>
-  </nav>
+    <a href="http://blog.wangyuanqi.com" target="_blank">博客</a>
+  </nav> -->
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: '',
+      el: '#app',
+      name: 'wangyuanqi',
+      repo: 'https://github.com/Aric-sky/book',
       loadSidebar: true,
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/': '/guide/README.md',
       },
-      subMaxLevel: 3,
-      // loadNavbar: true,
+      subMaxLevel: 6,
+      loadNavbar: true,
       coverpage: true, // 开启渲染封面的功能
       // onlyCover: true, // 网站首页只显示封面
+      // themeColor: '#25798A',
+      auto2top: true,
+      markdown: {
+        gfm: true,
+        tables: true,
+      },
       search: {
         maxAge: 86400000,               // 过期时间，单位毫秒，默认一天
         paths: [],                      // or 'auto'，匹配文件路径
