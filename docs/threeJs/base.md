@@ -14,22 +14,6 @@ threeJS是一个webgl为基础的库，对webGL的3D渲染工具方法与渲染�
 ![](https://img.alicdn.com/tfs/TB1TtpvdoD1gK0jSZFGXXbd3FXa-1000-588.jpg)
 
 
-## 坐标系
-
-Three.js 的坐标系是遵循右手坐标系，如下图：
-
-![右手坐标系](https://img.alicdn.com/tfs/TB1iQpwdeH2gK0jSZJnXXaT1FXa-255-220.jpg)
-
-> 坐标系的原点在画布中心（canvas.width / 2, canvas.height / 2）。我们可以通过 Three.js 提供的 THREE.AxisHelper() 辅助方法将坐标系可视化。
-
-```
-  // 创建坐标轴（RGB颜色 分别代表 XYZ轴）
-  var axisHelper = new THREE.AxisHelper(6)
-
-  // 将立方体网格加入到场景中
-  scene.add(axisHelper)
-```
-
 ## demo
 
 ```

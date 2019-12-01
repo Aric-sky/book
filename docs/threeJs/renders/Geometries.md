@@ -1,4 +1,42 @@
-目前 Three.js 一共提供了 22 个 Geometry，除了 EdgesGeometry、ExtrudeGeometry、TextGeometry、WireframeGeometry，上面涵盖 18 个，它们分别是底层的 planeGeometry 和以下 17 种（顺序与上述案例一一对应，下同）：
+### 几何体
+计算机内的3D世界是由点组成，两个点能够组成一条直线，三个不在一条直线上的点就能够组成一个三角形面，无数三角形面就能够组成各种形状的几何体。
+
+![正方体](https://img.alicdn.com/tfs/TB1bQbxoqL7gK0jSZFBXXXZZpXa-418-376.png)
+
+以创建一个简单的立方体为例，创建简单的立方体需要添加8个顶点和12个三角形的面，创建顶点时需要指定顶点在坐标系中的位置，添加面的时候需要指定构成面的三个顶点的序号，第一个添加的顶点序号为0，第二个添加的顶点序号为1…
+
+创建立方体的代码如下：
+
+```
+var geometry = new THREE.Geometry();
+
+// 添加8个顶点
+geometry.vertices.push(new THREE.Vector3(1, 1, 1));
+geometry.vertices.push(new THREE.Vector3(1, 1, -1));
+geometry.vertices.push(new THREE.Vector3(1, -1, 1));
+geometry.vertices.push(new THREE.Vector3(1, -1, -1));
+geometry.vertices.push(new THREE.Vector3(-1, 1, -1));
+geometry.vertices.push(new THREE.Vector3(-1, 1, 1));
+geometry.vertices.push(new THREE.Vector3(-1, -1, -1));
+geometry.vertices.push(new THREE.Vector3(-1, -1, 1));
+
+// 添加12个三角形的面
+geometry.faces.push(new THREE.Face3(0, 2, 1));
+geometry.faces.push(new THREE.Face3(2, 3, 1));
+geometry.faces.push(new THREE.Face3(4, 6, 5));
+geometry.faces.push(new THREE.Face3(6, 7, 5));
+geometry.faces.push(new THREE.Face3(4, 5, 1));
+geometry.faces.push(new THREE.Face3(5, 0, 1));
+geometry.faces.push(new THREE.Face3(7, 6, 2));
+geometry.faces.push(new THREE.Face3(6, 3, 2));
+geometry.faces.push(new THREE.Face3(5, 7, 0));
+geometry.faces.push(new THREE.Face3(7, 2, 0));
+geometry.faces.push(new THREE.Face3(1, 3, 4));
+geometry.faces.push(new THREE.Face3(3, 6, 4));
+```
+
+### 图形类型
+> 目前 Three.js 一共提供了 22 个 Geometry，除了 EdgesGeometry、ExtrudeGeometry、TextGeometry、WireframeGeometry，上面涵盖 18 个，它们分别是底层的 planeGeometry 和以下 17 种（顺序与上述案例一一对应，下同）：
 
 
 | BoxGeometry（长方体）| CircleGeometry（圆形）| ConeGeometry（圆锥体）| CylinderGeometry（圆柱体）|
@@ -64,7 +102,8 @@ TextGeometry 则需要从外部加载特定格式的字体文件（可在 typefa
 
 上述代码需要注意的点有：
 
-创建面时顶点的顺序，因为顶点顺序决定了某个面是面向摄像机还是背向摄像机。顶点的顺序是逆时针则是面向摄像机，反之则是背向摄像机。
+- 正面和反面
+> 创建面时顶点的顺序，因为顶点顺序决定了某个面是面向摄像机还是背向摄像机。顶点的顺序是逆时针则是面向摄像机，反之则是背向摄像机。
 出于性能的考虑，Three.js 认为几何体在整个生命周期都不会更改。若出现更改（如某顶点的位置），则需要告诉 geometry 对象的顶点需要更新 geometry.verticesNeedUpdate = true。更多关于需要主动设置变量来开启更新的事项，可查看官方文档的 [How to update things](https://threejs.org/docs/index.html#manual/en/introduction/How-to-update-things)。
 
 
