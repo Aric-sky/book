@@ -1,4 +1,4 @@
-> JavaScript 性能监测器 stats.js
+## JavaScript 性能监测器 stats.js
 
 stats.js 为开发者提供了易用的性能监测功能，它目前支持四种模式：
 
@@ -10,45 +10,44 @@ stats.js 为开发者提供了易用的性能监测功能，它目前支持四�
 ![](https://img.alicdn.com/tfs/TB1APV8doT1gK0jSZFhXXaAtVXa-667-103.jpg)
 
 
-1. stats.js 介绍
+### stats.js 介绍
 
-（1）stats.js 是一个 Three.js 开发的辅助库，这个库同样也是 Three.js 作者开发的。
-（2）stats.js 主要用于检测动画运行时的帧数。
-（3）GitHub 主页地址：https://github.com/mrdoob/stats.js
+1. stats.js 是一个 Three.js 开发的辅助库，这个库同样也是 Three.js 作者开发的。
+2. stats.js 主要用于检测动画运行时的帧数。
+3. GitHub 主页地址：https://github.com/mrdoob/stats.js
 
-2. 使用步骤
+### 使用步骤
 
-（1）首先在页面的 <head> 标签中引入这个辅助库。
+1. 首先在页面的 `<head>` 标签中引入这个辅助库。
 
 ```
-  <script src="https://cdn.bootcss.com/stats.js/r17/Stats.min.js"></script>
-  // https://www.bootcdn.cn/stats.js/
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
 ```
 
-（2）然后在网页上添加 <div> 元素，用于显示统计图形。
+2. 然后在网页上添加 `<div>` 元素，用于显示统计图形。
 
 ```
   <div id="Stats-output"></div>
 ```
 
-（3）接着初始化统计对象，并将该对象添加到 <div> 元素中。这里要注意 setMode() 方法参数：
+3. 接着初始化统计对象，并将该对象添加到 `<div>` 元素中。这里要注意 setMode() 方法参数：
 
-- 设置为 0：检测的是画面每秒传输帧数（fps）
-- 设置为 1：检测的是画面渲染的时间
+  - 设置为 0：检测的是画面每秒传输帧数（fps）
+  - 设置为 1：检测每帧的渲染时间
 
-（4）为了能够统计 stats 对象画面何时被重新渲染，我们还需要在重新渲染时调用 stats.update() 方法。
+4. 为了能够统计 stats 对象画面何时被重新渲染，我们还需要在重新渲染时调用 stats.update() 方法。
 
 
-3. 完整代码
+### 完整代码
 
 ```
   <!DOCTYPE html>
   <html>
   <head>
       <meta charset="utf-8">
-      <title>hangge.com</title>
-      <script type="text/javascript" src="../libs/three.js"></script>
-      <script type="text/javascript" src="../libs/stats.js"></script>
+      <title>demo</title>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
       <style>
           body {
               margin: 0;
@@ -59,12 +58,10 @@ stats.js 为开发者提供了易用的性能监测功能，它目前支持四�
   <body>
   
   <!-- 用于显示统计图形 -->
-  <div id="Stats-output">
-  </div>
+  <div id="Stats-output"></div>
   
   <!-- 作为Three.js渲染器输出元素 -->
-  <div id="WebGL-output">
-  </div>
+  <div id="WebGL-output"></div>
   
   <!-- 第一个 Three.js 样例代码 -->
   <script type="text/javascript">
