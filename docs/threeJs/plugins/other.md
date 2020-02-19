@@ -1,3 +1,5 @@
+## 常用方法
+
 > 自适应屏幕（窗口）大小
 
 ```
@@ -13,7 +15,16 @@
   }
 ```
 
+> 辅助坐标系
 
+THREE.AxisHelper() 辅助方法将坐标系可视化。
+```
+  // 创建坐标轴（RGB颜色 分别代表 XYZ轴）
+  var axisHelper = new THREE.AxisHelper(6)
+
+  // 将立方体网格加入到场景中
+  scene.add(axisHelper)
+```
 
 
 
